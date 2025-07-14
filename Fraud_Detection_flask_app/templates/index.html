@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fraud Detection System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid">
+        <!-- Header -->
+        <header class="text-center py-4 mb-4">
+            <h1 class="display-4 text-primary">
+                <i class="fas fa-shield-alt"></i> Fraud Detection System
+            </h1>
+            <p class="lead text-muted">Advanced AI-powered transaction fraud detection</p>
+        </header>
+
+        <div class="row">
+            <!-- Input Form -->
+            <div class="col-lg-8">
+                <div class="card shadow-lg">
+                    <div class="card-header bg-primary text-white">
+                        <h4><i class="fas fa-credit-card"></i> Transaction Details</h4>
+                    </div>
+                    <div class="card-body">
+                        <form id="fraudForm">
+                            <div class="row">
+                                <!-- Personal Information -->
+                                <div class="col-md-6">
+                                    <h5 class="text-secondary mb-3"><i class="fas fa-user"></i> Personal Information</h5>
+                                    
+                                    <div class="mb-3">
+                                        <label for="gender" class="form-label">Gender</label>
+                                        <select class="form-select" id="gender" required>
+                                            <option value="">Select Gender</option>
+                                            <option value="0">Female</option>
+                                            <option value="1">Male</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="age" class="form-label">Age</label>
+                                        <input type="number" class="form-control" id="age" min="18" max="100" required>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="state" class="form-label">State</label>
+                                        <select class="form-select" id="state" required>
+                                            <option value="">Select State</option>
+                                            <option value="0">Andhra Pradesh</option>
+                                            <option value="1">Arunachal Pradesh</option>
+                                            <option value="2">Assam</option>
+                                            <option value="3">Bihar</option>
+                                            <option value="4">Chhattisgarh</option>
+                                            <option value="5">Goa</option>
+                                            <option value="6">Gujarat</option>
+                                            <option value="7">Haryana</option>
+                                            <option value="8">Himachal Pradesh</option>
+                                            <option value="9">Jharkhand</option>
+                                            <option value="10">Karnataka</option>
+                                            <option value="11">Kerala</option>
+                                            <option value="12">Madhya Pradesh</option>
+                                            <option value="13">Maharashtra</option>
+                                            <option value="14">Manipur</option>
+                                            <option value="15">Meghalaya</option>
+                                            <option value="16">Mizoram</option>
+                                            <option value="17">Nagaland</option>
+                                            <option value="18">Odisha</option>
+                                            <option value="19">Punjab</option>
+                                            <option value="20">Rajasthan</option>
+                                            <option value="21">Sikkim</option>
+                                            <option value="22">Tamil Nadu</option>
+                                            <option value="23">Telangana</option>
+                                            <option value="24">Tripura</option>
+                                            <option value="25">Uttar Pradesh</option>
+                                            <option value="26">Uttarakhand</option>
+                                            <option value="27">West Bengal</option>
+                                            <option value="28">Delhi</option>
+                                            <option value="29">Jammu and Kashmir</option>
+                                            <option value="30">Ladakh</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="city" class="form-label">City</label>
+                                        <select class="form-select" id="city" required>
+                                            <option value="">Select City</option>
+                                            <option value="0">Mumbai</option>
+                                            <option value="1">Delhi</option>
+                                            <option value="2">Bangalore</option>
+                                            <option value="3">Hyderabad</option>
+                                            <option value="4">Chennai</option>
+                                            <option value="5">Kolkata</option>
+                                            <option value="6">Pune</option>
+                                            <option value="7">Ahmedabad</option>
+                                            <option value="8">Jaipur</option>
+                                            <option value="9">Surat</option>
+                                            <option value="10">Lucknow</option>
+                                            <option value="11">Kanpur</option>
+                                            <option value="12">Nagpur</option>
+                                            <option value="13">Indore</option>
+                                            <option value="14">Thane</option>
+                                            <option value="15">Bhopal</option>
+                                            <option value="16">Visakhapatnam</option>
+                                            <option value="17">Pimpri-Chinchwad</option>
+                                            <option value="18">Patna</option>
+                                            <option value="19">Vadodara</option>
+                                            <option value="20">Ghaziabad</option>
+                                            <option value="21">Ludhiana</option>
+                                            <option value="22">Agra</option>
+                                            <option value="23">Nashik</option>
+                                            <option value="24">Faridabad</option>
+                                            <option value="25">Meerut</option>
+                                            <option value="26">Rajkot</option>
+                                            <option value="27">Kalyan-Dombivali</option>
+                                            <option value="28">Vasai-Virar</option>
+                                            <option value="29">Varanasi</option>
+                                            <option value="30">Srinagar</option>
+                                            <option value="31">Aurangabad</option>
+                                            <option value="32">Dhanbad</option>
+                                            <option value="33">Amritsar</option>
+                                            <option value="34">Navi Mumbai</option>
+                                            <option value="35">Allahabad</option>
+                                            <option value="36">Ranchi</option>
+                                            <option value="37">Howrah</option>
+                                            <option value="38">Coimbatore</option>
+                                            <option value="39">Jabalpur</option>
+                                            <option value="40">Gwalior</option>
+                                            <option value="41">Vijayawada</option>
+                                            <option value="42">Jodhpur</option>
+                                            <option value="43">Madurai</option>
+                                            <option value="44">Raipur</option>
+                                            <option value="45">Kota</option>
+                                            <option value="46">Guwahati</option>
+                                            <option value="47">Chandigarh</option>
+                                            <option value="48">Solapur</option>
+                                            <option value="49">Hubli-Dharwad</option>
+                                            <option value="50">Mysore</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Account Information -->
+                                <div class="col-md-6">
+                                    <h5 class="text-secondary mb-3"><i class="fas fa-university"></i> Account Information</h5>
+                                    
+                                    <div class="mb-3">
+                                        <label for="bank_branch" class="form-label">Bank Branch</label>
+                                        <select class="form-select" id="bank_branch" required>
+                                            <option value="">Select Bank Branch</option>
+                                            <option value="0">State Bank of India - Main Branch</option>
+                                            <option value="1">HDFC Bank - Commercial Street</option>
+                                            <option value="2">ICICI Bank - MG Road</option>
+                                            <option value="3">Axis Bank - Connaught Place</option>
+                                            <option value="4">Punjab National Bank - Central Branch</option>
+                                            <option value="5">Bank of Baroda - City Center</option>
+                                            <option value="6">Canara Bank - Market Square</option>
+                                            <option value="7">Union Bank - Business District</option>
+                                            <option value="8">Indian Bank - Railway Station</option>
+                                            <option value="9">Bank of India - Mall Road</option>
+                                            <option value="10">Central Bank of India - Gandhi Nagar</option>
+                                            <option value="11">Indian Overseas Bank - Sector 5</option>
+                                            <option value="12">UCO Bank - Park Street</option>
+                                            <option value="13">Bank of Maharashtra - Ring Road</option>
+                                            <option value="14">Punjab & Sind Bank - Civil Lines</option>
+                                            <option value="15">Kotak Mahindra Bank - Tech Park</option>
+                                            <option value="16">IndusInd Bank - Financial District</option>
+                                            <option value="17">Yes Bank - IT Corridor</option>
+                                            <option value="18">IDFC First Bank - Metro Station</option>
+                                            <option value="19">Federal Bank - Old City</option>
+                                            <option value="20">South Indian Bank - Temple Road</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="account_type" class="form-label">Account Type</label>
+                                        <select class="form-select" id="account_type" required>
+                                            <option value="">Select Account Type</option>
+                                            <option value="0">Savings Account</option>
+                                            <option value="1">Current Account</option>
+                                            <option value="2">Credit Card Account</option>
+                                            <option value="3">Fixed Deposit Account</option>
+                                            <option value="4">Salary Account</option>
+                                            <option value="5">Joint Account</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="account_balance" class="form-label">Account Balance (₹)</label>
+                                        <input type="number" class="form-control" id="account_balance" step="0.01" min="0" required>
+                                        <small class="text-muted">Enter amount in Indian Rupees</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr class="my-4">
+
+                            <!-- Transaction Information -->
+                            <div class="row">
+                                <div class="col-12">
+                                    <h5 class="text-secondary mb-3"><i class="fas fa-exchange-alt"></i> Transaction Information</h5>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="transaction_amount" class="form-label">Transaction Amount (₹)</label>
+                                        <input type="number" class="form-control" id="transaction_amount" step="0.01" min="0.01" required>
+                                        <small class="text-muted">Enter amount in Indian Rupees</small>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="transaction_type" class="form-label">Transaction Type</label>
+                                        <select class="form-select" id="transaction_type" required>
+                                            <option value="">Select Transaction Type</option>
+                                            <option value="0">ATM Withdrawal</option>
+                                            <option value="1">Bank Deposit</option>
+                                            <option value="2">Fund Transfer (NEFT/RTGS/IMPS)</option>
+                                            <option value="3">UPI Payment</option>
+                                            <option value="4">Credit Card Payment</option>
+                                            <option value="5">Debit Card Purchase</option>
+                                            <option value="6">Online Shopping</option>
+                                            <option value="7">Bill Payment</option>
+                                            <option value="8">Mobile Recharge</option>
+                                            <option value="9">Investment Transaction</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="transaction_device" class="form-label">Transaction Device</label>
+                                        <select class="form-select" id="transaction_device" required>
+                                            <option value="">Select Device</option>
+                                            <option value="0">ATM Machine</option>
+                                            <option value="1">POS Terminal</option>
+                                            <option value="2">Mobile App (Android)</option>
+                                            <option value="3">Mobile App (iOS)</option>
+                                            <option value="4">Internet Banking (Desktop)</option>
+                                            <option value="5">Internet Banking (Mobile)</option>
+                                            <option value="6">UPI - PhonePe</option>
+                                            <option value="7">UPI - Google Pay</option>
+                                            <option value="8">UPI - Paytm</option>
+                                            <option value="9">UPI - BHIM</option>
+                                            <option value="10">Credit Card Swipe</option>
+                                            <option value="11">Debit Card Swipe</option>
+                                            <option value="12">NEFT Transfer</option>
+                                            <option value="13">RTGS Transfer</option>
+                                            <option value="14">IMPS Transfer</option>
+                                            <option value="15">Branch Counter</option>
+                                            <option value="16">CDM (Cash Deposit Machine)</option>
+                                            <option value="17">E-commerce Payment</option>
+                                            <option value="18">Wallet Transfer</option>
+                                            <option value="19">QR Code Payment</option>
+                                            <option value="20">Other Digital Platform</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="transaction_date" class="form-label">Transaction Date Code</label>
+                                        <input type="number" class="form-control" id="transaction_date" min="1" max="31" required>
+                                        <small class="text-muted">Day of month (1-31)</small>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="transaction_time" class="form-label">Transaction Time</label>
+                                        <select class="form-select" id="transaction_time" required>
+                                            <option value="">Select Time Slot</option>
+                                            <option value="3600">01:00 - Early Morning</option>
+                                            <option value="7200">02:00 - Early Morning</option>
+                                            <option value="10800">03:00 - Early Morning</option>
+                                            <option value="14400">04:00 - Early Morning</option>
+                                            <option value="18000">05:00 - Early Morning</option>
+                                            <option value="21600">06:00 - Morning</option>
+                                            <option value="25200">07:00 - Morning</option>
+                                            <option value="28800">08:00 - Morning</option>
+                                            <option value="32400">09:00 - Morning</option>
+                                            <option value="36000">10:00 - Morning</option>
+                                            <option value="39600">11:00 - Late Morning</option>
+                                            <option value="43200">12:00 - Noon</option>
+                                            <option value="46800">13:00 - Afternoon</option>
+                                            <option value="50400">14:00 - Afternoon</option>
+                                            <option value="54000">15:00 - Afternoon</option>
+                                            <option value="57600">16:00 - Late Afternoon</option>
+                                            <option value="61200">17:00 - Evening</option>
+                                            <option value="64800">18:00 - Evening</option>
+                                            <option value="68400">19:00 - Evening</option>
+                                            <option value="72000">20:00 - Night</option>
+                                            <option value="75600">21:00 - Night</option>
+                                            <option value="79200">22:00 - Night</option>
+                                            <option value="82800">23:00 - Late Night</option>
+                                            <option value="0">00:00 - Midnight</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="transaction_currency" class="form-label">Currency</label>
+                                        <select class="form-select" id="transaction_currency" required>
+                                            <option value="">Select Currency</option>
+                                            <option value="0">INR (Indian Rupee)</option>
+                                            <option value="1">USD (US Dollar)</option>
+                                            <option value="2">EUR (Euro)</option>
+                                            <option value="3">GBP (British Pound)</option>
+                                            <option value="4">AED (UAE Dirham)</option>
+                                            <option value="5">SGD (Singapore Dollar)</option>
+                                            <option value="6">CAD (Canadian Dollar)</option>
+                                            <option value="7">AUD (Australian Dollar)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="text-center mt-4">
+                                <button type="submit" class="btn btn-primary btn-lg px-5">
+                                    <i class="fas fa-search"></i> Analyze Transaction
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Panel -->
+            <div class="col-lg-4">
+                <div class="card shadow-lg">
+                    <div class="card-header bg-success text-white">
+                        <h4><i class="fas fa-chart-line"></i> Analysis Results</h4>
+                    </div>
+                    <div class="card-body">
+                        <div id="results" class="text-center">
+                            <div class="text-muted">
+                                <i class="fas fa-info-circle fa-3x mb-3"></i>
+                                <p>Enter transaction details and click "Analyze Transaction" to get fraud detection results.</p>
+                            </div>
+                        </div>
+                        
+                        <div id="loading" class="text-center d-none">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                            <p class="mt-2">Analyzing transaction...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Info -->
+                <div class="card shadow-lg mt-4">
+                    <div class="card-header bg-info text-white">
+                        <h5><i class="fas fa-lightbulb"></i> How it works</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success"></i> AI analyzes transaction patterns</li>
+                            <li><i class="fas fa-check text-success"></i> Real-time risk assessment</li>
+                            <li><i class="fas fa-check text-success"></i> Machine learning powered detection</li>
+                            <li><i class="fas fa-check text-success"></i> Instant fraud probability score</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('fraudForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Show loading
+            document.getElementById('results').classList.add('d-none');
+            document.getElementById('loading').classList.remove('d-none');
+            
+            // Collect form data
+            const formData = {
+                gender: document.getElementById('gender').value,
+                age: document.getElementById('age').value,
+                state: document.getElementById('state').value,
+                city: document.getElementById('city').value,
+                bank_branch: document.getElementById('bank_branch').value,
+                account_type: document.getElementById('account_type').value,
+                transaction_date: document.getElementById('transaction_date').value,
+                transaction_time: document.getElementById('transaction_time').value,
+                transaction_amount: document.getElementById('transaction_amount').value,
+                transaction_type: document.getElementById('transaction_type').value,
+                account_balance: document.getElementById('account_balance').value,
+                transaction_device: document.getElementById('transaction_device').value,
+                transaction_currency: document.getElementById('transaction_currency').value
+            };
+            
+            try {
+                const response = await fetch('/predict', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                const result = await response.json();
+                
+                // Hide loading
+                document.getElementById('loading').classList.add('d-none');
+                document.getElementById('results').classList.remove('d-none');
+                
+                if (result.error) {
+                    document.getElementById('results').innerHTML = `
+                        <div class="alert alert-danger">
+                            <i class="fas fa-exclamation-triangle"></i> ${result.error}
+                        </div>
+                    `;
+                } else {
+                    document.getElementById('results').innerHTML = `
+                        <div class="text-center">
+                            <div class="mb-3">
+                                <i class="fas fa-${result.prediction === 1 ? 'exclamation-triangle' : 'check-circle'} fa-3x" 
+                                   style="color: ${result.risk_color}"></i>
+                            </div>
+                            <h4 style="color: ${result.risk_color}">${result.message}</h4>
+                            <hr>
+                            <div class="row text-center">
+                                <div class="col-12 mb-3">
+                                    <strong>Fraud Probability</strong>
+                                    <div class="progress mt-2">
+                                        <div class="progress-bar" role="progressbar" 
+                                             style="width: ${result.fraud_probability}%; background-color: ${result.risk_color}"
+                                             aria-valuenow="${result.fraud_probability}" aria-valuemin="0" aria-valuemax="100">
+                                            ${result.fraud_probability}%
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="card bg-light">
+                                        <div class="card-body">
+                                            <h6>Risk Level</h6>
+                                            <span class="badge" style="background-color: ${result.risk_color}; font-size: 1em;">
+                                                ${result.risk_level}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="card bg-light">
+                                        <div class="card-body">
+                                            <h6>Confidence</h6>
+                                            <span class="badge bg-secondary" style="font-size: 1em;">
+                                                ${100 - result.fraud_probability}%
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                document.getElementById('loading').classList.add('d-none');
+                document.getElementById('results').classList.remove('d-none');
+                document.getElementById('results').innerHTML = `
+                    <div class="alert alert-danger">
+                        <i class="fas fa-exclamation-triangle"></i> Error: ${error.message}
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>
