@@ -136,7 +136,7 @@ fraud_flask_app/
 ## Technologies Used
 
 - **Backend**: Flask (Python)
-- **Frontend**: HTML5, CSS3, JavaScript, Bootstrap 5
+- **Frontend**: HTML5, CSS3, JavaScript
 - **Machine Learning**: scikit-learn, pandas, numpy
 - **Icons**: Font Awesome
 
